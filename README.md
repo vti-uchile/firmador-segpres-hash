@@ -468,7 +468,7 @@ Al reportar problemas, incluye:
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia de la Universidad de Chile. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia AGPLV3 Heredad del proyecto Itext 5.5.13.3 con la url https://github.com/itext/itext-java/blob/develop/LICENSE.md
 
 ## 📞 Soporte
 
