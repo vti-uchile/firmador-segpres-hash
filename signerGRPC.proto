@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option go_package = "{{GIT UCHILE }}/fea/lib/proto";
+
+option java_package = "cl.uchile.fea.lib.proto";
+option java_multiple_files = true;
+option java_outer_classname = "SignerGrpcPb";
+
+package signerGRPC;
+
+// The signer service definition.
+service Signer {
+  // Sends a file to sign.
+  rpc Send (SignRequest) returns (SignReply) {}
+}
+
+// The sign request.
+message SignRequest {
+  string name      = 1;  // The file name.
+  bytes  file      = 2;  // The file data to sign.
+  bytes  signature = 3;  // The signature data.
+  string rut       = 4;  // The signer RUT.
+  string password  = 5;  // The password or OTP (should be encrypted).
+  int32  page      = 6;  // The page to sign.
+  int32  llx       = 7;  // The lower left X coordinate to sign.
+  int32  lly       = 8;  // The lower left Y coordinate to sign.
+  int32  urx       = 9;  // The upper right X coordinate to sign.
+  int32  ury       = 10; // The upper right Y coordinate to sign.
+  bool   attended  = 11; // Whether the sign is attended (only used with Segpres).
+}
+
+// The sign response.
+message SignReply {
+  bool   success          = 1; // Whether the file was successfully signed.
+  bytes  file             = 2; // The signed file data.
+  string message          = 3; // The response message.
+  bool   invalid_password = 4; // Whether the password is invalid.
+  bool   retry            = 5; // Whether to retry the request.
+}
+

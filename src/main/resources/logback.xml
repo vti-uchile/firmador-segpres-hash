@@ -1,0 +1,37 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%date [%thread] %highlight(%-5level) %cyan(%logger) - %msg%n%ex</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="io.grpc.netty.shaded.io.grpc.netty" level="OFF" />
+    <logger name="sun.net.www.protocol.http" level="OFF" />
+    <logger name="jdk.event.security" level="OFF" />
+
+    <root level="${APP_LOGGING_LEVEL:-INFO}">
+        <appender-ref ref="STDOUT" />
+    </root>
+    <!--
+    <appender name="ELASTICSEARCH" class="cl.uchile.elasticsearch.logback.ElasticsearchAppender">
+        <encoder class="co.elastic.logging.logback.EcsEncoder">
+            <serviceName>${ELASTIC_APM_SERVICE_NAME}</serviceName>
+            <includeOrigin>true</includeOrigin>
+        </encoder>
+
+        <url>${ELASTICSEARCH_URL}</url>
+        <userName>${ELASTICSEARCH_USERNAME}</userName>
+        <password>${ELASTICSEARCH_PASSWORD}</password>
+        <index>${ELASTICSEARCH_INDEX}</index>
+    </appender>
+
+    <logger name="cl.uchile.fea" level="${ELASTICSEARCH_LOGGING_LEVEL:-INFO}">
+        <appender-ref ref="ELASTICSEARCH" />
+    </logger>
+
+    <logger name="cl.uchile.elasticsearch.logback.ElasticsearchAppender" level="ERROR" />
+    -->
+</configuration>
