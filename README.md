@@ -473,4 +473,4 @@ Para soporte técnico:
 ---
 Authors:
   - [Manuel Alba](https://github.com/elmalba)
-  - [Pablo de la cruz]
+  - Pablo de la cruz
