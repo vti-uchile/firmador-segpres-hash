@@ -480,6 +480,6 @@ Para soporte técnico:
 
 ---
 
-**Desarrollado por**: Facultad de Economía y Negocios - Universidad de Chile  
+**Desarrollado por**: VTI - Universidad de Chile  
 **Mantenido por**: Equipo FEA  
 **Versión**: 1.0.0
