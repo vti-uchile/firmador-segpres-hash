@@ -6,7 +6,7 @@
   <packaging>jar</packaging>
   <version>1.0.0</version>
   <name>grpc-segpres-hash-signer</name>
-  <url>https://{{GIT UCHILE }}/fea/grpc-segpres-hash-signer</url>
+  <url>https://github.com/vti-uchile/firmador-segpres-hash</url>
   <properties>
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -26,13 +26,11 @@
     </repository>
   </repositories>
   <dependencies>
-    <!-- http://{{REPOSITORY UCHILE }}:8081/nexus/content/groups/public/cl/uchile/fea/lib/proto/signer-grpc -->
     <dependency>
       <groupId>cl.uchile.fea.lib.proto</groupId>
       <artifactId>signer-grpc</artifactId>
       <version>1.0.1</version>
     </dependency>
-    <!-- http://{{REPOSITORY UCHILE }}:8081/nexus/content/groups/public/cl/uchile/elasticsearch/logback-appender -->
     <!-- <dependency>
       <groupId>cl.uchile.elasticsearch</groupId>
       <artifactId>logback-appender</artifactId>

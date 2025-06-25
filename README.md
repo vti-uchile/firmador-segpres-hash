@@ -92,9 +92,9 @@ docker build -t grpc-segpres-signer .
 # Ejecutar el contenedor
 docker run -d \
   -p 8080:8080 \
-  -e SEGPRES_API_TOKEN_KEY=your_token \
+  -e SEGPRES_API_TOKEN_KEY=your_api_token_key \
   -e SEGPRES_SECRET=your_secret \
-  -e SEGPRES_BASE_URL=https://api.segpres.cl \
+  -e SEGPRES_BASE_URL=https://api.firma.cert.digital.gob.cl \
   -v /path/to/secret:/app/secret \
   grpc-segpres-signer
 ```
@@ -105,17 +105,17 @@ docker run -d \
 
 | Variable | Descripción | Ejemplo |
 |----------|-------------|---------|
-| `SEGPRES_API_TOKEN_KEY` | Token de API de Segpres | `your-api-token-here` |
-| `SEGPRES_SECRET` | Secreto para firma JWT | `your-jwt-secret` |
-| `SEGPRES_BASE_URL` | URL base de la API Segpres | `https://api.segpres.cl` |
+| `SEGPRES_API_TOKEN_KEY` | Token de API de Segpres | `your-api-token-key-here` |
+| `SEGPRES_SECRET` | Secreto para firma | `your-secret-here` |
+| `SEGPRES_BASE_URL` | URL base de la API de Segpres | `https://api.firma.cert.digital.gob.cl` |
 
 ### Variables de Entorno Opcionales
 
 | Variable | Descripción | Valor por Defecto | Rango |
 |----------|-------------|-------------------|-------|
 | `APP_THREADS` | Número de hilos del servidor | `5` | `1-20` |
-| `APP_MAX_INBOUND_MESSAGE_SIZE` | Tamaño máximo de mensaje | `4MB` | `1MB-100MB` |
-| `APP_TIMEOUT` | Timeout de conexión (ms) | `60000` | `10000-300000` |
+| `APP_MAX_INBOUND_MESSAGE_SIZE` | Tamaño máximo de mensaje (en bytes) | `4194304` (4 MB) | `1048576-104857600` (1-100 MB) |
+| `APP_TIMEOUT` | Timeout de conexión (en milisegundos) | `60000` (60 segundos) | `10000-300000` (10-300 segundos) |
 | `APP_LOGGING_LEVEL` | Nivel de log | `INFO` | `TRACE,DEBUG,INFO,WARN,ERROR` |
 | `APP_TIMEZONE` | Zona horaria | Sistema | `America/Santiago` |
 
@@ -195,19 +195,19 @@ grpcurl -plaintext -d '{
 
 **Request: `SignRequest`**
 
-| Campo | Tipo | Descripción | Obligatorio |
-|-------|------|-------------|-------------|
-| `name` | `string` | Nombre del archivo | ❌ |
-| `file` | `bytes` | Datos del PDF a firmar | ✅ |
-| `signature` | `bytes` | Imagen de firma (PNG/JPG) | ❌ |
-| `rut` | `string` | RUT del firmante | ✅ |
-| `password` | `string` | OTP encriptado con RSA | ✅ |
-| `page` | `int32` | Página para firma visible | ❌ |
-| `llx` | `int32` | Coordenada X inferior izquierda | ❌ |
-| `lly` | `int32` | Coordenada Y inferior izquierda | ❌ |
-| `urx` | `int32` | Coordenada X superior derecha | ❌ |
-| `ury` | `int32` | Coordenada Y superior derecha | ❌ |
-| `attended` | `bool` | Firma atendida (true) o desatendida (false) | ✅ |
+| Campo | Tipo | Descripción |
+|-------|------|-------------|
+| `name` | `string` | Nombre del archivo |
+| `file` | `bytes` | Datos del PDF a firmar |
+| `signature` | `bytes` | Imagen de firma (PNG/JPG) |
+| `rut` | `string` | RUT del firmante |
+| `password` | `string` | OTP encriptado con RSA |
+| `page` | `int32` | Página para firma visible |
+| `llx` | `int32` | Coordenada X inferior izquierda |
+| `lly` | `int32` | Coordenada Y inferior izquierda |
+| `urx` | `int32` | Coordenada X superior derecha |
+| `ury` | `int32` | Coordenada Y superior derecha |
+| `attended` | `bool` | Firma atendida (true) o desatendida (false) |
 
 **Response: `SignReply`**
 
@@ -248,7 +248,7 @@ grpc-segpres-hash-signer/
 │   └── logback.xml                # Configuración de logging
 ├── signerGRPC.proto               # Definición del servicio gRPC
 ├── pom.xml                        # Configuración Maven
-├── dockerfile                     # Imagen Docker
+├── Dockerfile                     # Imagen Docker
 └── README.md                      # Este archivo
 ```
 
@@ -425,20 +425,6 @@ export ELASTIC_APM_SECRET_TOKEN="your-apm-token"
 export ELASTIC_APM_ENVIRONMENT="production"
 ```
 
-### Logs Estructurados
-
-Los logs siguen el formato ECS (Elastic Common Schema):
-
-```json
-{
-  "@timestamp": "2023-12-01T10:30:00.000Z",
-  "log.level": "INFO",
-  "service.name": "grpc-segpres-signer",
-  "message": "Server started, listening on port 8080",
-  "user.id": "12345678-9"
-}
-```
-
 ## 🤝 Contribución
 
 ### Guías para Contribuir
@@ -468,7 +454,7 @@ Al reportar problemas, incluye:
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia AGPLV3 Heredad del proyecto Itext 5.5.13.3 con la url https://github.com/itext/itext-java/blob/develop/LICENSE.md
+Este proyecto está bajo la [licencia AGPLv3](https://itextpdf.com/how-buy/AGPLv3-license) heredado del proyecto [itext](https://github.com/itext/itextpdf).
 
 ## 📞 Soporte
 
