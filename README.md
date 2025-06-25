@@ -461,7 +461,7 @@ Este proyecto está bajo la [licencia AGPLv3](https://itextpdf.com/how-buy/AGPLv
 Para soporte técnico:
 
 - **Email**: arquitectura-vti@uchile.cl
-- **Documentación**: Consulta la documentación interna de FEA
+- **Documentación**: Consulta la documentación interna de segpres
 - **Issues**: Usa el sistema de issues del repositorio
 
 ---
@@ -469,3 +469,8 @@ Para soporte técnico:
 **Desarrollado por**: VTI - Universidad de Chile  
 **Mantenido por**: Equipo FEA  
 **Versión**: 1.0.0
+
+---
+Authors:
+  - [Manuel Alba](https://github.com/elmalba)
+  - [Pablo de la cruz]
