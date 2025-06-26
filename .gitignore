@@ -1,5 +1,7 @@
-.vscode
+.*
 target
-.env
-start.sh
 secret
+*.exe
+*.pem
+*.pdf
+lib

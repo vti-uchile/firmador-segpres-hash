@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>cl.uchile.fea</groupId>
-  <artifactId>grpc-segpres-hash-signer</artifactId>
+  <artifactId>firmador-segpres-hash</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0</version>
-  <name>grpc-segpres-hash-signer</name>
+  <name>firmador-segpres-hash</name>
   <url>https://github.com/vti-uchile/firmador-segpres-hash</url>
   <properties>
     <java.version>1.8</java.version>
@@ -13,23 +13,36 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <repositories>
-    <repository>
-      <id>public</id>
-      <url>http://{{REPOSITORY UCHILE }}:8081/nexus/content/groups/public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
   <dependencies>
-    <dependency>
+    <!-- <dependency>
       <groupId>cl.uchile.fea.lib.proto</groupId>
       <artifactId>signer-grpc</artifactId>
       <version>1.0.1</version>
+    </dependency> -->
+    <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>3.21.12</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/io.grpc/grpc-protobuf -->
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-protobuf</artifactId>
+      <version>1.52.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/io.grpc/grpc-stub -->
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-stub</artifactId>
+      <version>1.52.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/annotations-api -->
+    <dependency> <!-- necessary for Java 9+ -->
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>annotations-api</artifactId>
+      <version>6.0.53</version>
+      <scope>provided</scope>
     </dependency>
     <!-- <dependency>
       <groupId>cl.uchile.elasticsearch</groupId>

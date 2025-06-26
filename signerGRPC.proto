@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "{{GIT UCHILE }}/fea/lib/proto";
+option go_package = "github.com/vti-uchile/firmador-segpres-hash/examples/go/lib/proto";
 
 option java_package = "cl.uchile.fea.lib.proto";
 option java_multiple_files = true;
@@ -37,4 +37,3 @@ message SignReply {
   bool   invalid_password = 4; // Whether the password is invalid.
   bool   retry            = 5; // Whether to retry the request.
 }
-
